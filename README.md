@@ -37,5 +37,3 @@ An OpenAI Chat Bot that works like ChatGPT.
 1. **Open Browser**  
 Hold CTRL and click on the link in the terminal:  
 `http://localhost:5173/`
-
-## Deploy 
