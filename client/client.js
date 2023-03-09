@@ -71,7 +71,7 @@ const handleSubmit = async e => {
 
   loader(messageDiv);
 
-  const response = await fetch('http://localhost:2400', {
+  const response = await fetch("https://chatbot-charly-server.onrender.com/", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
