@@ -43,6 +43,6 @@ app.post("/", async (req, res) => {
     }
 })
 
-app.listen(2400, () => console.log("Server is running on port http://localhost:2400")); 
+app.listen(process.env.PORT || 2400, () => console.log("Server is running on port http://localhost:2400")); 
 
 
