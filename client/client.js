@@ -4,6 +4,8 @@ import user from './assets/user.svg';
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
 
+const DEV = import.meta.env.DEV;
+
 let loadInterval;
 
 function loader(element) {
@@ -71,7 +73,12 @@ const handleSubmit = async e => {
 
   loader(messageDiv);
 
-  const response = await fetch("https://chatbot-charly-server.onrender.com/", {
+  let serverURL = "https://chatbot-charly-server.onrender.com/";
+  if (DEV) {
+    serverURL = "http://localhost:2400";
+  }
+
+  const response = await fetch(serverURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
