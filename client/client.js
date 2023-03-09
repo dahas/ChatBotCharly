@@ -13,7 +13,7 @@ function loader(element) {
   loadInterval = setInterval(() => {
     element.textContent += '.';
 
-    if(element.textContent == '....') {
+    if (element.textContent == '....') {
       element.textContent = '';
     }
   }, 300);
@@ -23,7 +23,7 @@ function typeText(element, text) {
   let index = 0;
 
   let interval = setInterval(() => {
-    if(index < text.length) {
+    if (index < text.length) {
       element.innerHTML += text.charAt(index);
       index++
     } else {
@@ -41,7 +41,7 @@ function generateUniqueID() {
 }
 
 function chatStripe(isAI, value, uniqueID) {
-  return(
+  return (
     `
       <div class="wrapper ${isAI && 'ai'}">
         <div class="chat">
@@ -57,7 +57,7 @@ function chatStripe(isAI, value, uniqueID) {
 
 const handleSubmit = async e => {
   e.preventDefault();
-  const data = new FormData(form); 
+  const data = new FormData(form);
 
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
 
@@ -87,14 +87,14 @@ const handleSubmit = async e => {
       prompt: data.get('prompt')
     })
   });
-  
+
   clearInterval(loadInterval);
   messageDiv.innerHTML = "";
 
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-  
+
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
@@ -105,8 +105,9 @@ const handleSubmit = async e => {
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', e => {
-  if(e.keyCode === 13) {
+  if (e.keyCode === 13) {
     handleSubmit(e);
   }
 });
+
 
